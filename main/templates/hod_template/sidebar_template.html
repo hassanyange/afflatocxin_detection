@@ -1,0 +1,74 @@
+{% load static %}
+
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="{% url 'admin_home' %}" class="brand-link">
+        <img src="{% static 'dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Afflatoxin Platform</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="{% url 'admin_profile' %}" class="d-block">{{ request.user.first_name }} {{ request.user.last_name }}</a>
+            </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Home -->
+                <li class="nav-item">
+                    {% url 'admin_home' as admin_home %}
+                    <a href="{{ admin_home }}" class="nav-link {% if request.path == admin_home %} active {% endif %}">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>Home</p>
+                    </a>
+                </li>
+
+                <!-- Manage Crops -->
+                <li class="nav-item">
+                    {% url 'manage_crops' as manage_crops %}
+                    <a href="{{ manage_crops }}" class="nav-link {% if request.path == manage_crops %} active {% endif %}">
+                        <i class="nav-icon fas fa-seedling"></i>
+                        <p>Manage Crops</p>
+                    </a>
+                </li>
+
+                <!-- Add Crop -->
+                <li class="nav-item">
+                    {% url 'add_crop' as add_crop %}
+                    <a href="{{ add_crop }}" class="nav-link {% if request.path == add_crop %} active {% endif %}">
+                        <i class="nav-icon fas fa-plus"></i>
+                        <p>Add Crop</p>
+                    </a>
+                </li>
+
+                <!-- Manage Tests -->
+                <li class="nav-item">
+                    {% url 'manage_tests' as manage_tests %}
+                    <a href="{{ manage_tests }}" class="nav-link {% if request.path == manage_tests %} active {% endif %}">
+                        <i class="nav-icon fas fa-vial"></i>
+                        <p>Manage Tests</p>
+                    </a>
+                </li>
+
+                <!-- Add Test -->
+                <li class="nav-item">
+                    {% url 'add_test' as add_test %}
+                    <a href="{{ add_test }}" class="nav-link {% if request.path == add_test %} active {% endif %}">
+                        <i class="nav-icon fas fa-plus-circle"></i>
+                        <p>Add Test</p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>
