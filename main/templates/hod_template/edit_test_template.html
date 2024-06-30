@@ -19,7 +19,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form id="edit_test_form" role="form" method="POST" action="{% url 'edit_test_save' test.id %}" enctype="multipart/form-data">
+                    <form id="edit_test_form" role="form" method="POST" action="{% url 'edit_test' test.id %}" enctype="multipart/form-data">
                         {% csrf_token %}
                         
                         {% comment %} Display Messages {% endcomment %}
@@ -48,30 +48,40 @@
                         {% endif %}
                         
                         <div class="card-body">
-                            <div class="form-group">
-                                <label for="id_crop">Crop</label>
-                                {{ form.crop }}
+                            <div class="form-group row">
+                                <label for="id_crop" class="col-sm-3 col-form-label">Crop</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="id_crop" name="crop" class="form-control" value="{{ form.crop.value }}" required>
+                                </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="id_sample_id">Sample ID</label>
-                                {{ form.sample_id }}
+                            <div class="form-group row">
+                                <label for="id_sample_id" class="col-sm-3 col-form-label">Sample ID</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="id_sample_id" name="sample_id" class="form-control" value="{{ form.sample_id.value }}" required>
+                                </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="id_gps_location">GPS Location</label>
-                                {{ form.gps_location }}
+                            <div class="form-group row">
+                                <label for="id_gps_location" class="col-sm-3 col-form-label">GPS Location</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="id_gps_location" name="gps_location" class="form-control" value="{{ form.gps_location.value }}" required>
+                                </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="id_aflatoxin_level">Aflatoxin Level</label>
-                                {{ form.aflatoxin_level }}
+                            <div class="form-group row">
+                                <label for="id_aflatoxin_level" class="col-sm-3 col-form-label">Aflatoxin Level</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="id_aflatoxin_level" name="aflatoxin_level" class="form-control" value="{{ form.aflatoxin_level.value }}" required>
+                                </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="id_sample_photo">Sample Photo</label>
-                                {{ form.sample_photo }}
-                                <img src="{{ test.sample_photo.url }}" alt="Current Sample Photo" style="max-height: 100px;">
+                            <div class="form-group row">
+                                <label for="id_sample_photo" class="col-sm-3 col-form-label">Sample Photo</label>
+                                <div class="col-sm-9">
+                                    <input type="file" id="id_sample_photo" name="sample_photo" class="form-control-file" accept="image/*">
+                                    <img src="{{ test.sample_photo.url }}" alt="Current Sample Photo" style="max-height: 100px;">
+                                </div>
                             </div>
                         </div>
                         <!-- /.card-body -->

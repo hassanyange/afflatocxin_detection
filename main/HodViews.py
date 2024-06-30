@@ -7,12 +7,11 @@ from .forms import CropForm, TestForm
 
 # Home view
 def admin_home(request):
-    all_crop_count = Crop.objects.all().count()
-    all_test_count = Test.objects.all().count()
-
+    crops = Crop.objects.all()  # Fetch all crops or any specific queryset
     context = {
-        "all_crop_count": all_crop_count,
-        "all_test_count": all_test_count,
+        'crops': crops,
+        'all_crop_count': Crop.objects.count(),  # Example count for total crops
+        'all_test_count': Test.objects.count(),  # Example count for total tests
     }
     return render(request, "hod_template/home_content.html", context)
 
@@ -96,7 +95,6 @@ def add_test(request):
     }
     return render(request, 'hod_template/add_test_template.html', context)
 
-# Edit test view
 def edit_test(request, test_id):
     test = get_object_or_404(Test, id=test_id)
     if request.method == 'POST':
@@ -111,9 +109,10 @@ def edit_test(request, test_id):
         form = TestForm(instance=test)
     context = {
         'form': form,
-        'id': test_id
+        'test': test  # Include the test object in the context
     }
     return render(request, 'hod_template/edit_test_template.html', context)
+
 
 # Delete test view
 def delete_test(request, test_id):

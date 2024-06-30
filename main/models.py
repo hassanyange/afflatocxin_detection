@@ -13,11 +13,7 @@ class AdminHOD(models.Model):
 
 
 class Crop(models.Model):
-    CROP_CHOICES = [
-        ('maize', 'Maize'),
-        ('groundnut', 'Groundnut'),
-    ]
-    name = models.CharField(max_length=50, choices=CROP_CHOICES, unique=True)
+    name = models.CharField(max_length=50,  unique=True)
 
     def __str__(self):
         return self.name
@@ -28,7 +24,7 @@ class Test(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     gps_location = models.CharField(max_length=100)
     aflatoxin_level = models.DecimalField(max_digits=5, decimal_places=2)
-    sample_photo = models.ImageField(upload_to='samples/')
+    sample_photo = models.ImageField(upload_to='media/')
 
     def __str__(self):
         return f"Test {self.sample_id} for {self.crop.name}"
