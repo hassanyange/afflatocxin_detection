@@ -24,7 +24,7 @@ class Test(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     gps_location = models.CharField(max_length=100)
     aflatoxin_level = models.DecimalField(max_digits=5, decimal_places=2)
-    sample_photo = models.ImageField(upload_to='media/')
+    sample_photo = models.TextField()
 
     def __str__(self):
         return f"Test {self.sample_id} for {self.crop.name}"
